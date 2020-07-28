@@ -6,15 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  title: string;
+  time = { hour: 13, minute: 30 };
+
   constructor() {}
 
-  ngOnInit(): void {
-    this.title = 'hello';
-  }
-
-  onClick(): void {
-    this.title = 'angular';
-    console.log('works');
-  }
+  ngOnInit(): void {}
 }
