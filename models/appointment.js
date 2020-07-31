@@ -1,12 +1,25 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const appointmentSchema = new Schema({
+const AppointmentSchema = new Schema({
   date: {
-    type: String,
+    year: {
+      type: Number,
+    },
+    month: {
+      type: Number,
+    },
+    day: {
+      type: Number,
+    },
   },
   time: {
-    type: String,
+    hour: {
+      type: Number,
+    },
+    minute: {
+      type: Number,
+    },
   },
   name: {
     type: String,
@@ -19,5 +32,5 @@ const appointmentSchema = new Schema({
   },
 });
 
-const Appointments = mongoose.model("appointment", appointmentSchema);
+const Appointments = mongoose.model("Appointments", AppointmentSchema);
 module.exports = Appointments;
