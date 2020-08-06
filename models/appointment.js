@@ -14,12 +14,7 @@ const AppointmentSchema = new Schema({
     },
   },
   time: {
-    hour: {
-      type: Number,
-    },
-    minute: {
-      type: Number,
-    },
+    type: String,
   },
   name: {
     type: String,

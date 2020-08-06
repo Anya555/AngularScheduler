@@ -6,10 +6,10 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   makeAppointment = (data) => {
-    return this.http.post('http://localhost:3001/api/appointments', data);
+    return this.http.post('/api/appointments', data);
   };
 
   getAllAppointments = () => {
-    return this.http.get('http://localhost:3001/api/appointments');
+    return this.http.get('/api/appointments');
   };
 }
