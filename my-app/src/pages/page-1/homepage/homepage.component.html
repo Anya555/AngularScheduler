@@ -17,6 +17,8 @@
             #d="ngbDatepicker"
             ngModel
             (ngModelChange)="filterTime(f)"
+            [markDisabled]="isDisabled"
+            [minDate]="fullDate"
           />
         </div>
         <div class="form-group">
@@ -27,8 +29,8 @@
             name="time"
             ngModel
           >
-            <option *ngFor="let item of options" [value]="item">{{
-              item
+            <option *ngFor="let item of filteredOptions" [value]="item.value">{{
+              item.text
             }}</option>
           </select>
         </div>
