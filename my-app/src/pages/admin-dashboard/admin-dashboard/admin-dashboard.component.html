@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <br /><br />
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments; index as i">
+            <td>{{ appointment.name }}</td>
+            <td>{{ appointment.email }}</td>
+            <td>{{ appointment.phone }}</td>
+            <td>
+              {{
+                appointment.date.month +
+                  "/" +
+                  appointment.date.day +
+                  "/" +
+                  appointment.date.year
+              }}
+            </td>
+            <td>{{ appointment.time }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

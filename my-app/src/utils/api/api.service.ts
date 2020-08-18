@@ -12,4 +12,9 @@ export class ApiService {
   getAllAppointments = () => {
     return this.http.get('/api/appointments');
   };
+
+  login = (user) => {
+    console.log(user);
+    return this.http.post('/api/login', user);
+  };
 }
