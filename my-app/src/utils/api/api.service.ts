@@ -13,6 +13,11 @@ export class ApiService {
     return this.http.get('/api/appointments');
   };
 
+  deleteAppointment = (id) => {
+    console.log(id);
+    return this.http.delete('api/appointments/' + id);
+  };
+
   login = (user) => {
     return this.http.post('/api/login', user);
   };

@@ -45,4 +45,10 @@ export class AdminDashboardComponent implements OnInit {
       appointment.name.toLowerCase().includes(f.value.search.toLowerCase())
     );
   }
+
+  deleteAppointment(id): void {
+    this.apiService.deleteAppointment(id).subscribe(() => {
+      this.displayAllAppointments();
+    });
+  }
 }
