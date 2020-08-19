@@ -9,20 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  error: string;
+
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {}
 
   login(f: NgForm): void {
-    this.apiService.login(f.value).subscribe((response: any) => {
-      localStorage.setItem('AuthToken', `Bearer ${response.token}`);
-      console.log(response);
-      if (
-        response.token &&
-        response.userId === 'fXVAcjh721e0i9SBdQEV6hXpKU43'
-      ) {
-        this.router.navigate(['admin-dashboard']);
-      }
-    });
+    this.apiService.login(f.value).subscribe(
+      (res: any) => {
+        localStorage.setItem('AuthToken', `Bearer ${res.token}`);
+        if (res.token && res.user.role === 'admin') {
+          this.router.navigate(['admin-dashboard']);
+        }
+      },
+      (err) => (this.error = err.error.general)
+    );
   }
 }

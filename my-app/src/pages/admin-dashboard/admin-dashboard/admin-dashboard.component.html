@@ -1,7 +1,29 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-4">
+      <br />
+      <form #f="ngForm">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="search"
+          ngModel
+          (ngModelChange)="handleSearch(f)"
+        />
+      </form>
+    </div>
+    <div class="col-md-4 offset-sm-4">
+      <br />
+      <button class="sign-out" (click)="signOut()">Sign out</button>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
-      <br /><br />
+      <br />
+      <br />
+
       <table class="table table-striped">
         <thead>
           <tr>
@@ -13,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let appointment of appointments; index as i">
+          <tr *ngFor="let appointment of filteredAppointments">
             <td>{{ appointment.name }}</td>
             <td>{{ appointment.email }}</td>
             <td>{{ appointment.phone }}</td>

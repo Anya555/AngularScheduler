@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ApiService } from '../../../utils/api/api.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
-type Option = { text: string; value: number };
+type Option = { text: string; value: string };
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -11,24 +11,26 @@ type Option = { text: string; value: number };
 })
 export class HomepageComponent implements OnInit {
   options: Option[] = [
-    { text: '9am', value: 9 },
-    { text: '10am', value: 10 },
-    { text: '11am', value: 11 },
-    { text: '12am', value: 12 },
-    { text: '1pm', value: 13 },
-    { text: '2pm', value: 14 },
-    { text: '3pm', value: 15 },
-    { text: '4pm', value: 16 },
-    { text: '5pm', value: 17 },
+    { text: '9am', value: '9' },
+    { text: '10am', value: '10' },
+    { text: '11am', value: '11' },
+    { text: '12am', value: '12' },
+    { text: '1pm', value: '13' },
+    { text: '2pm', value: '14' },
+    { text: '3pm', value: '15' },
+    { text: '4pm', value: '16' },
+    { text: '5pm', value: '17' },
   ];
   appointments: any[];
   filteredOptions: Option[];
   today = new Date();
+  currentHour: string;
   fullDate: any;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.currentHour = this.today.getHours().toString();
     this.filteredOptions = this.options;
     this.getAll();
     this.fullDate = {
@@ -45,6 +47,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
+    console.log(f.value);
     this.apiService.makeAppointment(f.value).subscribe((data) => {
       console.log(data);
       f.resetForm();
@@ -62,14 +65,25 @@ export class HomepageComponent implements OnInit {
       );
     });
 
-    this.filteredOptions = this.options.filter(
-      (hour) => !sameDayAppointments.some((date) => date.time === hour.value)
-    );
+    this.filteredOptions = this.options
+      .filter((hour) => {
+        return !sameDayAppointments.some((appointment) => {
+          return appointment.time === hour.value;
+        });
+      })
+      .filter((hour) => {
+        if (
+          this.fullDate.year === f.value.date.year &&
+          this.fullDate.month === f.value.date.month &&
+          this.fullDate.day === f.value.date.day
+        ) {
+          return hour.value > this.currentHour;
+        }
+        return true;
+      });
   }
 
   isDisabled = (date: NgbDate, current: { month: number }): boolean => {
-    // The value returned by getDay() method is an integer corresponding to the day of the week: 0 for Sunday,
-    // 1 for Monday, 2 for Tuesday, 3 for Wednesday, 4 for Thursday, 5 for Friday, 6 for Saturday.
     let sameDayAppointments = this.appointments.filter((appointment) => {
       return (
         appointment.date.year === date.year &&
@@ -78,11 +92,24 @@ export class HomepageComponent implements OnInit {
       );
     });
 
+    // disable today's date if current hour is greater than 5 pm
+    if (
+      this.fullDate.year === date.year &&
+      this.fullDate.month === date.month &&
+      this.fullDate.day === date.day
+    ) {
+      if (this.currentHour > this.options[this.options.length - 1].value) {
+        return true;
+      }
+    }
+
     let dateOfTheMonth = new Date(
       date.month + '/' + date.day + '/' + date.year
     );
     let dayOfTheWeek = dateOfTheMonth.getDay();
 
+    // The value returned by getDay() method is an integer corresponding to the day of the week: 0 for Sunday,
+    // 1 for Monday, 2 for Tuesday, 3 for Wednesday, 4 for Thursday, 5 for Friday, 6 for Saturday.
     return (
       dayOfTheWeek === 0 ||
       dayOfTheWeek === 6 ||

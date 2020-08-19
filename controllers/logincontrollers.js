@@ -13,6 +13,9 @@ module.exports = {
       .signInWithEmailAndPassword(user.email, user.password)
       .then((data) => {
         userId = data.user.uid;
+        if (userId === process.env.USERID) {
+          user.role = "admin";
+        }
         return data.user.getIdToken();
       })
       .then((token) => {
@@ -22,7 +25,7 @@ module.exports = {
         console.error(error);
         return response
           .status(403)
-          .json({ general: "wrong credentials, please try again" });
+          .json({ general: "Wrong credentials, please try again" });
       });
   },
 };

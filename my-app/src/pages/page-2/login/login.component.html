@@ -11,6 +11,7 @@
           <label for="formGroupExampleInput">Password</label>
           <input type="password" class="form-control" name="password" ngModel />
         </div>
+        <p *ngIf="error">{{ error }}</p>
         <button type="submit">Login</button>
       </form>
     </div>

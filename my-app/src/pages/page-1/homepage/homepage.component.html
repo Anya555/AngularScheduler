@@ -19,6 +19,7 @@
             (ngModelChange)="filterTime(f)"
             [markDisabled]="isDisabled"
             [minDate]="fullDate"
+            required
           />
         </div>
         <div class="form-group">
@@ -28,6 +29,7 @@
             id="exampleFormControlSelect1"
             name="time"
             ngModel
+            required
           >
             <option *ngFor="let item of filteredOptions" [value]="item.value">{{
               item.text
@@ -37,15 +39,34 @@
 
         <div class="form-group">
           <label for="formGroupExampleInput">Full name</label>
-          <input type="text" class="form-control" name="name" ngModel />
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            ngModel
+            required
+          />
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput">Email</label>
-          <input type="text" class="form-control" name="email" email ngModel />
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            email
+            ngModel
+            required
+          />
         </div>
         <div class="form-group">
           <label for="formGroupExampleInput">Phone number</label>
-          <input type="text" class="form-control" name="phone" ngModel />
+          <input
+            type="text"
+            class="form-control"
+            name="phone"
+            ngModel
+            required
+          />
         </div>
         <button type="submit">Submit</button>
       </form>

@@ -5,27 +5,32 @@ const AppointmentSchema = new Schema({
   date: {
     year: {
       type: Number,
+      required: true,
     },
     month: {
       type: Number,
+      required: true,
     },
     day: {
       type: Number,
+      required: true,
     },
   },
   time: {
-    value: {
-      type: Number,
-    },
+    type: String,
+    required: true,
   },
   name: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
   },
   phone: {
     type: String,
+    required: true,
   },
 });
 

@@ -8,8 +8,6 @@ import { Page2Module } from '../pages/page-2/page-2.module';
 import { NavbarModule } from '../pages/navbar/navbar.module';
 import { AdminDashboardModule } from '../pages/admin-dashboard/admin-dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],

@@ -14,7 +14,6 @@ export class ApiService {
   };
 
   login = (user) => {
-    console.log(user);
     return this.http.post('/api/login', user);
   };
 }
