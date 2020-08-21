@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   error: string;
+  admin: object;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     this.apiService.login(f.value).subscribe(
       (res: any) => {
         localStorage.setItem('AuthToken', `Bearer ${res.token}`);
+        this.admin = res;
         if (res.token && res.user.role === 'admin') {
           this.router.navigate(['admin-dashboard']);
         }

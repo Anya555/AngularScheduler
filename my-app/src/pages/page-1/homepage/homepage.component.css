@@ -1,3 +1,6 @@
 .date {
   width: 100%;
 }
+.required {
+  color: red;
+}
