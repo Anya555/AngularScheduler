@@ -21,4 +21,9 @@ export class ApiService {
   login = (user) => {
     return this.http.post('/api/login', user);
   };
+
+  sendEmailConfirmation = (message) => {
+    console.log(message);
+    return this.http.post('/api/nodemailer', message);
+  };
 }

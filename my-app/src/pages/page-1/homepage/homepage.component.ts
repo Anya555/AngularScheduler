@@ -56,6 +56,12 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+  sendEmailConfirmation(f: NgForm) {
+    this.apiService.sendEmailConfirmation(f.value).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
   filterTime(f: NgForm): void {
     let sameDayAppointments = this.appointments.filter((appointment) => {
       return (

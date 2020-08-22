@@ -1,7 +1,9 @@
 const router = require("express").Router();
-const appointmentroutes = require("./appoinntmentApi");
-const loginRoutes = require("./login");
+const appointmentRoutes = require("./appoinntmentApi");
+const loginRoutes = require("./loginApi");
+const nodemailerRoutes = require("./nodemailerApi");
 
-router.use("/appointments", appointmentroutes);
+router.use("/appointments", appointmentRoutes);
 router.use("/login", loginRoutes);
+router.use("/nodemailer", nodemailerRoutes);
 module.exports = router;
