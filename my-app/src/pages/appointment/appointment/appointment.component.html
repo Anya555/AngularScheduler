@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-sm-4 col-sm-12">
+      <div class="card">
+        <div>Name:{{ appointment.name }}</div>
+        <div>
+          Date:{{
+            appointment.date.month +
+              "/" +
+              appointment.date.day +
+              "/" +
+              appointment.date.year
+          }}
+        </div>
+        <div>Time: {{ appointment.time }}</div>
+        <div>Email: {{ appointment.email }}</div>
+        <div>Phone: {{ appointment.phone }}</div>
+      </div>
+      <button (click)="deleteAppointment()">Delete appointment</button>
+    </div>
+  </div>
+</div>

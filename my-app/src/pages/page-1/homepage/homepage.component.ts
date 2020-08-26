@@ -49,15 +49,15 @@ export class HomepageComponent implements OnInit {
   onSubmit(f: NgForm) {
     console.log(f.value);
     this.apiService.makeAppointment(f.value).subscribe((data) => {
-      console.log(data);
-      f.resetForm();
       this.filteredOptions = this.options;
       this.getAll();
+      this.sendEmailConfirmation(data);
+      f.resetForm();
     });
   }
 
-  sendEmailConfirmation(f: NgForm) {
-    this.apiService.sendEmailConfirmation(f.value).subscribe((data) => {
+  sendEmailConfirmation(data) {
+    this.apiService.sendEmailConfirmation(data).subscribe((data) => {
       console.log(data);
     });
   }
@@ -83,7 +83,7 @@ export class HomepageComponent implements OnInit {
           this.fullDate.month === f.value.date.month &&
           this.fullDate.day === f.value.date.day
         ) {
-          return hour.value > this.currentHour;
+          return parseInt(hour.value) > parseInt(this.currentHour);
         }
         return true;
       });
@@ -117,9 +117,8 @@ export class HomepageComponent implements OnInit {
     // The value returned by getDay() method is an integer corresponding to the day of the week: 0 for Sunday,
     // 1 for Monday, 2 for Tuesday, 3 for Wednesday, 4 for Thursday, 5 for Friday, 6 for Saturday.
     return (
-      dayOfTheWeek === 0 ||
-      dayOfTheWeek === 6 ||
-      sameDayAppointments.length === this.options.length
+      // dayOfTheWeek === 0 ||
+      dayOfTheWeek === 6 || sameDayAppointments.length === this.options.length
     );
   };
 }

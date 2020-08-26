@@ -8,7 +8,10 @@ import { Page2Module } from '../pages/page-2/page-2.module';
 import { NavbarModule } from '../pages/navbar/navbar.module';
 import { AdminDashboardModule } from '../pages/admin-dashboard/admin-dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AccessForbiddenModule } from '../pages/access-forbidden/access-forbidden.module';
+import { AppContext } from './context';
+import { AdminGuard } from './admin.guard';
+import { AppointmentModule } from '../pages/appointment/appointment/appointment.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,8 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarModule,
     HttpClientModule,
     AdminDashboardModule,
+    AccessForbiddenModule,
+    AppointmentModule,
   ],
-  providers: [],
+  exports: [],
+  providers: [AppContext, AdminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

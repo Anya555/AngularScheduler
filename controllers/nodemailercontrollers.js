@@ -13,7 +13,7 @@ module.exports = {
       },
     });
 
-    const { name, email, date, time } = req.body;
+    const { name, email, date, time, _id } = req.body;
 
     let mailOptions = {
       from: "annapanas0906@gmail.com",
@@ -21,7 +21,9 @@ module.exports = {
       subject: `You received new email from annapanas0906@gmail.com`,
       text: `Dear ${name},  \n\n Your appointment has been confirmed for ${
         date.day + "/" + date.month + "/" + date.year
-      } at ${time + ":00"}, \n\n Best regards.`,
+      } at ${time + ":00"},
+      \n\n  to cancel appointment click here "http://localhost:4200/appointment/${_id}"
+       \n\n Best regards.`,
     };
 
     transporter.sendMail(mailOptions, (err, info) => {

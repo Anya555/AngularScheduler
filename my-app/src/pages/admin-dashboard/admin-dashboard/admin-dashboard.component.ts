@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../utils/api/api.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AppContext } from '../../../app/context';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,12 +10,17 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private context: AppContext
+  ) {}
   appointments: any[];
   filteredAppointments: any[];
 
   ngOnInit(): void {
     this.displayAllAppointments();
+    console.log(this.context);
   }
 
   displayAllAppointments(): void {
@@ -36,7 +42,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   signOut(): void {
-    localStorage.removeItem('AuthToken');
+    localStorage.removeItem('user');
     this.router.navigate(['login']);
   }
 

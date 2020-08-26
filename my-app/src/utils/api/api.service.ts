@@ -26,4 +26,8 @@ export class ApiService {
     console.log(message);
     return this.http.post('/api/nodemailer', message);
   };
+
+  findAppointment = (id) => {
+    return this.http.get('/api/appointments/' + id);
+  };
 }

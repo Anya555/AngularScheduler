@@ -2,12 +2,7 @@
   <div class="row">
     <div class="col-md-3 offset-sm-6 col-sm-12">
       <br /><br />
-      <form
-        #f="ngForm"
-        (ngSubmit)="onSubmit(f)"
-        (ngSubmit)="sendEmailConfirmation(f)"
-        novalidate
-      >
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
         <div (click)="d.toggle()" class="date">
           Click to select available date
         </div>
