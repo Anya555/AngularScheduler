@@ -4,7 +4,7 @@
       <br />
       <form #f="ngForm">
         <input
-          class="form-control mr-sm-2"
+          class="form-control mr-sm-2 search"
           type="search"
           placeholder="Search"
           aria-label="Search"
@@ -16,48 +16,55 @@
     </div>
     <div class="col-md-4 offset-sm-4">
       <br />
-      <button class="sign-out" (click)="signOut()">Sign out</button>
+      <button class="sign-out" (click)="signOut()" class="btn sign-out">
+        Sign out
+      </button>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <br />
       <br />
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let appointment of filteredAppointments">
-            <td>{{ appointment.name }}</td>
-            <td>{{ appointment.email }}</td>
-            <td>{{ appointment.phone }}</td>
-            <td>
-              {{
-                appointment.date.month +
-                  "/" +
-                  appointment.date.day +
-                  "/" +
-                  appointment.date.year
-              }}
-            </td>
-            <td>{{ appointment.time + ":" + "00" }}</td>
-            <td>
-              <button (click)="deleteAppointment(appointment._id)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="card">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="th">Name</th>
+              <th scope="col" class="th">Email</th>
+              <th scope="col" class="th">Phone</th>
+              <th scope="col" class="th">Date</th>
+              <th scope="col" class="th">Time</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of filteredAppointments">
+              <td>{{ appointment.name }}</td>
+              <td>{{ appointment.email }}</td>
+              <td>{{ appointment.phone }}</td>
+              <td>
+                {{
+                  appointment.date.month +
+                    "/" +
+                    appointment.date.day +
+                    "/" +
+                    appointment.date.year
+                }}
+              </td>
+              <td>{{ appointment.time + ":" + "00" }}</td>
+              <td>
+                <button
+                  (click)="deleteAppointment(appointment._id)"
+                  class="btn delete"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
     </div>
   </div>
 </div>

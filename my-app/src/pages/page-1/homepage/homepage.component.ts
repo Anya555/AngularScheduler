@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../../../utils/api/api.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 type Option = { text: string; value: string };
 @Component({
@@ -27,7 +28,7 @@ export class HomepageComponent implements OnInit {
   currentHour: string;
   fullDate: any;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.currentHour = this.today.getHours().toString();
@@ -53,6 +54,7 @@ export class HomepageComponent implements OnInit {
       this.getAll();
       this.sendEmailConfirmation(data);
       f.resetForm();
+      this.router.navigate(['appointment-confirmation']);
     });
   }
 
@@ -117,8 +119,9 @@ export class HomepageComponent implements OnInit {
     // The value returned by getDay() method is an integer corresponding to the day of the week: 0 for Sunday,
     // 1 for Monday, 2 for Tuesday, 3 for Wednesday, 4 for Thursday, 5 for Friday, 6 for Saturday.
     return (
-      // dayOfTheWeek === 0 ||
-      dayOfTheWeek === 6 || sameDayAppointments.length === this.options.length
+      dayOfTheWeek === 0 ||
+      dayOfTheWeek === 6 ||
+      sameDayAppointments.length === this.options.length
     );
   };
 }

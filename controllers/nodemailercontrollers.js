@@ -1,5 +1,6 @@
 const db = require("../models");
 const nodemailer = require("nodemailer");
+const moment = require("moment");
 
 module.exports = {
   handleEmail: (req, res) => {
@@ -14,16 +15,21 @@ module.exports = {
     });
 
     const { name, email, date, time, _id } = req.body;
+    let newDate = moment(date).format("LL");
 
     let mailOptions = {
       from: "annapanas0906@gmail.com",
       to: email,
       subject: `You received new email from annapanas0906@gmail.com`,
-      text: `Dear ${name},  \n\n Your appointment has been confirmed for ${
-        date.day + "/" + date.month + "/" + date.year
-      } at ${time + ":00"},
-      \n\n  to cancel appointment click here "http://localhost:4200/appointment/${_id}"
-       \n\n Best regards.`,
+
+      html: `<p>Dear ${name},  
+      <br><br>
+      Your appointment has been confirmed for ${newDate} at ${time + ":00"}. 
+      <br><br>
+      To cancel appointment <a href="http://localhost:4200/appointment/${_id}">click here.</a>
+      <br><br>
+      Best regards.
+      </p>`,
     };
 
     transporter.sendMail(mailOptions, (err, info) => {

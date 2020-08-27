@@ -12,6 +12,8 @@ import { AccessForbiddenModule } from '../pages/access-forbidden/access-forbidde
 import { AppContext } from './context';
 import { AdminGuard } from './admin.guard';
 import { AppointmentModule } from '../pages/appointment/appointment/appointment.module';
+import { AppointmentConfirmationModule } from '../pages/appointment-confirmation/appointment-confirmation/appointment-confirmation.module';
+import { CancellationConfirmationModule } from '../pages/cancellation-confirmation/cancellation-confirmation/cancellation-confirmation.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,6 +27,8 @@ import { AppointmentModule } from '../pages/appointment/appointment/appointment.
     AdminDashboardModule,
     AccessForbiddenModule,
     AppointmentModule,
+    AppointmentConfirmationModule,
+    CancellationConfirmationModule,
   ],
   exports: [],
   providers: [AppContext, AdminGuard],

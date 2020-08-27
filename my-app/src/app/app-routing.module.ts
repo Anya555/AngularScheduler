@@ -8,6 +8,8 @@ import { ContextResolver } from './context-resolver';
 import { AdminGuard } from './admin.guard';
 import { AppointmentComponent } from '../pages/appointment/appointment/appointment.component';
 import { AppointmentResolver } from '../pages/appointment/appointment.resolver';
+import { AppointmentConfirmationComponent } from '../pages/appointment-confirmation/appointment-confirmation/appointment-confirmation.component';
+import { CancellationConfirmationComponent } from '../pages/cancellation-confirmation/cancellation-confirmation/cancellation-confirmation.component';
 const routes: Routes = [
   {
     path: '',
@@ -38,6 +40,14 @@ const routes: Routes = [
         resolve: {
           appointment: AppointmentResolver,
         },
+      },
+      {
+        path: 'appointment-confirmation',
+        component: AppointmentConfirmationComponent,
+      },
+      {
+        path: 'cancellation-confirmation',
+        component: CancellationConfirmationComponent,
       },
     ],
   },
