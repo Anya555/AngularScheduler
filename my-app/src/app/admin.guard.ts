@@ -17,8 +17,8 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     let authUser = JSON.parse(localStorage.getItem('user'));
-
-    if (authUser && authUser.authToken && authUser.role === 'admin') {
+    // console.log(authUser);
+    if (authUser && authUser.token && authUser.role === 'admin') {
       return of(true);
     } else {
       this.router.navigate(['access-forbidden']);

@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AppContext } from 'src/app/context';
 
 @Injectable()
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private context: AppContext) {}
 
   makeAppointment = (data) => {
     return this.http.post('/api/appointments', data);
@@ -19,11 +20,16 @@ export class ApiService {
   };
 
   login = (user) => {
-    return this.http.post('/api/login', user);
+    return this.http.post('/api/users/login', user);
   };
 
+  // signup = (user) => {
+  //   return this.http.post('/api/users', user).subscribe((res) => {
+  //     console.log(res);
+  //   });
+  // };
+
   sendEmailConfirmation = (message) => {
-    console.log(message);
     return this.http.post('/api/nodemailer', message);
   };
 

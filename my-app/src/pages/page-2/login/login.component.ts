@@ -21,19 +21,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(f: NgForm): void {
-    this.apiService.login(f.value).subscribe(
-      (res: any) => {
-        let authorizedUser = {
-          authToken: `Bearer ${res.token}`,
-          role: res.user.role,
-        };
-        localStorage.setItem('user', JSON.stringify(authorizedUser));
-        this.context.admin = res;
-        if (res.token && res.user.role === 'admin') {
-          this.router.navigate(['admin-dashboard']);
-        }
-      },
-      (err) => (this.error = err.error.general)
-    );
+    this.apiService.login(f.value).subscribe((res: any) => {
+      console.log('login');
+      let authorizedUser = {
+        token: res.accessToken,
+        role: res.data.role,
+      };
+      localStorage.setItem('user', JSON.stringify(authorizedUser));
+      this.context.admin = res;
+      console.log(this.context.admin);
+
+      if (
+        this.context.admin.accessToken &&
+        this.context.admin.data.role === 'admin'
+      ) {
+        this.router.navigate(['admin-dashboard']);
+      }
+    });
   }
 }

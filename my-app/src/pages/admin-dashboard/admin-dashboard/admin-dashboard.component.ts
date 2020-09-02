@@ -20,7 +20,6 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayAllAppointments();
-    console.log(this.context);
   }
 
   displayAllAppointments(): void {

@@ -19,6 +19,13 @@ export class AppointmentComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((res) => {
       this.appointment = res.appointment;
+      this.appointment.phone =
+        '(' +
+        this.appointment.phone.substr(0, 3) +
+        ') ' +
+        this.appointment.phone.substr(3, 3) +
+        '-' +
+        this.appointment.phone.substr(6);
     });
   }
 

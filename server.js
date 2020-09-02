@@ -5,6 +5,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
+const jwt = require("jsonwebtoken");
+const User = require("./models/usermodel");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -29,6 +31,28 @@ app.all("/*", function (req, res, next) {
   );
   next();
 });
+
+app.use(async (req, res, next) => {
+  console.log("x-access token", req.headers["x-access-token"]);
+  if (req.headers["x-access-token"]) {
+    const accessToken = req.headers["x-access-token"];
+    const { userId, exp } = await jwt.verify(
+      accessToken,
+      process.env.JWT_SECRET
+    );
+    /// Check if token has expired
+    if (exp < Date.now().valueOf() / 1000) {
+      return res.status(401).json({
+        error: "JWT token has expired, please login to obtain a new one",
+      });
+    }
+    res.locals.loggedInUser = await User.findById(userId);
+    next();
+  } else {
+    next();
+  }
+});
+
 app.use(routes);
 
 if (process.env.NODE_ENV == "production") {

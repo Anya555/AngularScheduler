@@ -16,8 +16,9 @@ export class ContextResolver implements Resolve<AppContext> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     let authUser = JSON.parse(localStorage.getItem('user')) || {};
-    this.context.admin = { token: authUser.authToken, role: authUser.role };
-    // console.log(this.context.admin);
+    this.context.admin = { accessToken: authUser.token, role: authUser.role };
+    console.log(this.context.admin.accessToken);
+    // console.log(authUser);
 
     return this.context;
   }
