@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       };
       localStorage.setItem('user', JSON.stringify(authorizedUser));
       this.context.admin = res;
-      console.log(this.context.admin);
 
       if (
         this.context.admin.accessToken &&

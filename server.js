@@ -33,7 +33,6 @@ app.all("/*", function (req, res, next) {
 });
 
 app.use(async (req, res, next) => {
-  console.log("x-access token", req.headers["x-access-token"]);
   if (req.headers["x-access-token"]) {
     const accessToken = req.headers["x-access-token"];
     const { userId, exp } = await jwt.verify(
