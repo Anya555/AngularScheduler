@@ -53,7 +53,7 @@ app.use(routes);
 
 if (process.env.NODE_ENV == "production") {
   app.use(
-    express.static(path.join(__dirname + "/my-app/dist/my-app/index.html"))
+    express.static(path.join(__dirname, "/my-app/dist/my-app/index.html"))
   );
 }
 
