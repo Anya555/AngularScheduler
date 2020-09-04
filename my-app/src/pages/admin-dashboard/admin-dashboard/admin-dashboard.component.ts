@@ -23,7 +23,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   displayAllAppointments(): void {
-    this.apiService.getAllAppointments().subscribe((data: any[]) => {
+    this.apiService.getAppointmentsForAdmin().subscribe((data: any[]) => {
       console.log(data);
       this.appointments = data;
       this.filteredAppointments = data;

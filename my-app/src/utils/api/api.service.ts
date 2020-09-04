@@ -10,12 +10,15 @@ export class ApiService {
     return this.http.post('/api/appointments', data);
   };
 
-  getAllAppointments = () => {
+  getAppointmentsForAdmin = () => {
     return this.http.get('/api/appointments');
   };
 
+  getAllAppointments = () => {
+    return this.http.get('/api/appointments/getAll');
+  };
+
   deleteAppointment = (id) => {
-    console.log(id);
     return this.http.delete('api/appointments/' + id);
   };
 

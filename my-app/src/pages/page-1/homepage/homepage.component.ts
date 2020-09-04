@@ -48,7 +48,6 @@ export class HomepageComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
     this.apiService.makeAppointment(f.value).subscribe((data) => {
       this.filteredOptions = this.options;
       this.getAll();
@@ -59,9 +58,7 @@ export class HomepageComponent implements OnInit {
   }
 
   sendEmailConfirmation(data) {
-    this.apiService.sendEmailConfirmation(data).subscribe((data) => {
-      console.log(data);
-    });
+    this.apiService.sendEmailConfirmation(data).subscribe(() => {});
   }
 
   filterTime(f: NgForm): void {

@@ -3,6 +3,7 @@ const appointmentcontroller = require("../../controllers/appointmentcontrollers"
 const loginControllers = require("../../controllers/logincontrollers");
 
 router.route("/").post(appointmentcontroller.create);
+router.route("/getAll").get(appointmentcontroller.findAll);
 router
   .route("/")
   .get(loginControllers.allowIfLoggedin, appointmentcontroller.findAll);
