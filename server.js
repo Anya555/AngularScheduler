@@ -55,7 +55,7 @@ app.use(async (req, res, next) => {
 app.use(routes);
 
 if (process.env.NODE_ENV == "production") {
-  app.use(express.static(path.join(__dirname, "./my-app/build")));
+  app.use(express.static(path.join(__dirname + "/dist/my-app/index.html")));
 }
 
 app.listen(PORT, function () {
