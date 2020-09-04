@@ -43,7 +43,7 @@ export class HomepageComponent implements OnInit {
 
   getAll(): void {
     this.apiService.getAllAppointments().subscribe((data: any[]) => {
-      this.appointments = data;
+      this.appointments = data || [];
     });
   }
 
