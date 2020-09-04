@@ -11,13 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose
-  .connect(
-    process.env.MONGODB_URI || "mongodb://localhost:27017/appointments",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGOATLAS || "mongodb://localhost:27017/appointments", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to the Database successfully");
   });
@@ -55,7 +52,9 @@ app.use(async (req, res, next) => {
 app.use(routes);
 
 if (process.env.NODE_ENV == "production") {
-  app.use(express.static(path.join(__dirname + "/dist/my-app/index.html")));
+  app.use(
+    express.static(path.join(__dirname + "/my-app/dist/my-app/index.html"))
+  );
 }
 
 app.listen(PORT, function () {
