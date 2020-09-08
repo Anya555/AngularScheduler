@@ -26,7 +26,7 @@ module.exports = {
       <br><br>
       Your appointment has been confirmed for ${newDate} at ${time + ":00"}. 
       <br><br>
-      To cancel appointment <a href="http://localhost:4200/appointment/${_id}">click here.</a>
+      To cancel appointment <a href="https://angular-scheduler.herokuapp.com/appointment/${_id}">click here.</a>
       <br><br>
       Best regards.
       </p>`,
