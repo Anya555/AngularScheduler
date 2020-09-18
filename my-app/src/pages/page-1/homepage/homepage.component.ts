@@ -5,6 +5,14 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
 type Option = { text: string; value: string };
+type AppointmentDate = { year: number; month: number; day: number };
+type Appointment = {
+  date: AppointmentDate;
+  time: string;
+  name: string;
+  email: string;
+  phone: string;
+};
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -22,11 +30,11 @@ export class HomepageComponent implements OnInit {
     { text: '4pm', value: '16' },
     { text: '5pm', value: '17' },
   ];
-  appointments: any[];
+  appointments: Appointment[];
   filteredOptions: Option[];
   today = new Date();
   currentHour: string;
-  fullDate: any;
+  fullDate: AppointmentDate;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
