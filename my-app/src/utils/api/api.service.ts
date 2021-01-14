@@ -19,7 +19,7 @@ export class ApiService {
   };
 
   deleteAppointment = (id) => {
-    return this.http.delete('api/appointments/' + id);
+    return this.http.delete('/api/appointments/' + id);
   };
 
   login = (user) => {

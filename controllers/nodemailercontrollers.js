@@ -5,11 +5,12 @@ const moment = require("moment");
 module.exports = {
   handleEmail: (req, res) => {
     let transporter = nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      service: "outlook",
+      host: "smtp.outlook.com",
       port: 587,
+      secure: false,
       auth: {
-        user: "annapanas0906@gmail.com",
+        user: "justbookit0@outlook.com",
         pass: process.env.PASSWORD,
       },
     });
@@ -18,9 +19,9 @@ module.exports = {
     let newDate = moment(date).format("LL");
 
     let mailOptions = {
-      from: "annapanas0906@gmail.com",
+      from: "justbookit0@outlook.com",
       to: email,
-      subject: `You received new email from annapanas0906@gmail.com`,
+      subject: `You received new email from justbookit0@outlook.com`,
 
       html: `<p>Dear ${name},  
       <br><br>

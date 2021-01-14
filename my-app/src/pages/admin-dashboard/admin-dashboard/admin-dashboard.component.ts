@@ -24,7 +24,6 @@ export class AdminDashboardComponent implements OnInit {
 
   displayAllAppointments(): void {
     this.apiService.getAppointmentsForAdmin().subscribe((data: any[]) => {
-      console.log(data);
       this.appointments = data;
       this.filteredAppointments = data;
       // convert phone numbers into US format: (000) 000-0000
