@@ -37,3 +37,33 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: smaller;
 }
+
+.background {
+  background-image: url(~src/assets/images/time.jpg);
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+
+.container-fluid {
+  background-color: aliceblue;
+  height: 100%;
+}
+
+.header {
+  text-transform: uppercase;
+  font-size: x-large;
+  color: rgb(7, 59, 7);
+}
+
+.login {
+  text-transform: uppercase;
+}
+
+.login {
+  color: rgb(10, 73, 60);
+  border-color: rgb(10, 73, 60);
+}

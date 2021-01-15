@@ -17,6 +17,7 @@ export class AppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // change phone number in to us phone format
     this.route.data.subscribe((res) => {
       this.appointment = res.appointment;
       this.appointment.phone =

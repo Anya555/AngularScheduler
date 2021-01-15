@@ -129,4 +129,8 @@ export class HomepageComponent implements OnInit {
       sameDayAppointments.length === this.options.length
     );
   };
+
+  redirectToLogin(): void {
+    this.router.navigate(['login']);
+  }
 }

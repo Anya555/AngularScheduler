@@ -1,7 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 main">
-      <div class="col-md-3 offset-sm-6 col-sm-12">
+<div class="container-fluid">
+  <div class="background">
+    <nav class="navbar">
+      <button
+        class="btn login btn-outline my-2 my-sm-0 ml-auto"
+        (click)="redirectToLogin()"
+      >
+        Login
+      </button>
+    </nav>
+    <div class="row">
+      <div class="col-md-6 offset-sm-1 col-sm-12">
+        <h2 class="header">Appointment Scheduling Software</h2>
+      </div>
+      <div class="col-md-3 col-sm-12">
         <br /><br />
         <div class="card appointment-card">
           <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
