@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const loginControllers = require("../../controllers/logincontrollers");
 
-router.route("/").post(loginControllers.signup);
+router.route("/signup").post(loginControllers.signup);
 
 router.route("/login").post(loginControllers.login);
 

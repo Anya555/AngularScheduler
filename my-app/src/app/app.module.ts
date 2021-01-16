@@ -14,6 +14,8 @@ import { AdminGuard } from './admin.guard';
 import { AppointmentModule } from '../pages/appointment/appointment/appointment.module';
 import { AppointmentConfirmationModule } from '../pages/appointment-confirmation/appointment-confirmation/appointment-confirmation.module';
 import { CancellationConfirmationModule } from '../pages/cancellation-confirmation/cancellation-confirmation/cancellation-confirmation.module';
+import { SignUpModule } from '../pages/sign-up/sign-up.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,6 +31,7 @@ import { CancellationConfirmationModule } from '../pages/cancellation-confirmati
     AppointmentModule,
     AppointmentConfirmationModule,
     CancellationConfirmationModule,
+    SignUpModule,
   ],
   exports: [],
   providers: [AppContext, AdminGuard],

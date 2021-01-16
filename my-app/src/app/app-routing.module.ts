@@ -10,6 +10,8 @@ import { AppointmentComponent } from '../pages/appointment/appointment/appointme
 import { AppointmentResolver } from '../pages/appointment/appointment.resolver';
 import { AppointmentConfirmationComponent } from '../pages/appointment-confirmation/appointment-confirmation/appointment-confirmation.component';
 import { CancellationConfirmationComponent } from '../pages/cancellation-confirmation/cancellation-confirmation/cancellation-confirmation.component';
+import { SignUpComponent } from '../pages/sign-up/sign-up/sign-up.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +22,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomepageComponent,
+      },
+      {
+        path: 'signup',
+        component: SignUpComponent,
       },
       {
         path: 'login',

@@ -26,6 +26,10 @@ export class ApiService {
     return this.http.post('/api/users/login', user);
   };
 
+  signup = (user) => {
+    return this.http.post('/api/users/signup', user);
+  };
+
   sendEmailConfirmation = (message) => {
     return this.http.post('/api/nodemailer', message);
   };
