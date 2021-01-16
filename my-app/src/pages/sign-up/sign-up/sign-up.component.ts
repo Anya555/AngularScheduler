@@ -12,9 +12,8 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // signup only needed to create admin user
   signup(f: NgForm): void {
-    this.apiService.signup(f.value).subscribe((res: any) => {
-      console.log(res);
-    });
+    this.apiService.signup(f.value).subscribe((res: any) => {});
   }
 }

@@ -2,7 +2,13 @@
   <div class="row">
     <div class="col-md-4 offset-sm-4 col-sm-12">
       <div class="card">
-        <h1>Login</h1>
+        <div class="login-header">
+          <h1 class="lock">Login</h1>
+          <img
+            src="https://img.icons8.com/flat_round/50/000000/lock.png"
+            class="lock icon"
+          />
+        </div>
         <br />
         <form #f="ngForm" (ngSubmit)="login(f)">
           <div class="form-group">
@@ -29,5 +35,9 @@
         </form>
       </div>
     </div>
+    <p>
+      For testing admin functionality: Email: annapanas0906@gmail.com, Password:
+      test
+    </p>
   </div>
 </div>

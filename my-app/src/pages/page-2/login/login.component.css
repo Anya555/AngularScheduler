@@ -20,6 +20,14 @@
   border-color: white;
 }
 
-h1 {
+.lock {
+  display: inline-block;
+}
+
+.login-header {
   text-align: center;
+}
+
+.icon {
+  padding-left: 5px;
 }
